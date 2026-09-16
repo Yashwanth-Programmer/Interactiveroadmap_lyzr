@@ -1,0 +1,133 @@
+@import "tailwindcss";
+
+:root {
+  --ink-900: #0e1b2a;
+  --ink-800: #142434;
+  --ink-700: #16283b;
+  --line-500: #2a415a;
+  --line-400: #395774;
+  --paper-100: #eaf2f8;
+  --paper-300: #c7d6e2;
+  --paper-500: #8fa6b8;
+  --signal-500: #e8a33d;
+  --signal-600: #cf8a26;
+  --positive-500: #4fa184;
+  --risk-500: #c1554b;
+
+  --background: var(--ink-900);
+  --foreground: var(--paper-100);
+}
+
+@theme inline {
+  --color-ink-900: var(--ink-900);
+  --color-ink-800: var(--ink-800);
+  --color-ink-700: var(--ink-700);
+  --color-line-500: var(--line-500);
+  --color-line-400: var(--line-400);
+  --color-paper-100: var(--paper-100);
+  --color-paper-300: var(--paper-300);
+  --color-paper-500: var(--paper-500);
+  --color-signal-500: var(--signal-500);
+  --color-signal-600: var(--signal-600);
+  --color-positive-500: var(--positive-500);
+  --color-risk-500: var(--risk-500);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+  --font-mono: var(--font-mono);
+}
+
+:root {
+  --font-display: "Fraunces", ui-serif, Georgia, "Times New Roman", serif;
+  --font-body: "IBM Plex Sans", ui-sans-serif, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+}
+
+::selection {
+  background: var(--signal-500);
+  color: var(--ink-900);
+}
+
+:focus-visible {
+  outline: 2px solid var(--signal-500);
+  outline-offset: 2px;
+}
+
+/* Blueprint grid texture — used sparingly, hero only */
+.blueprint-grid {
+  background-image:
+    linear-gradient(to right, rgba(234, 242, 248, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(234, 242, 248, 0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.font-display {
+  font-family: var(--font-display), ui-serif, Georgia, serif;
+}
+
+.font-mono {
+  font-family: var(--font-mono), ui-monospace, monospace;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--ink-900);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--line-500);
+  border-radius: 0;
+}
+
+/* Ava character animation */
+@keyframes ava-pulse-outer {
+  0%, 100% { r: 21; opacity: 0.6; }
+  50% { r: 22.5; opacity: 1; }
+}
+@keyframes ava-pulse-inner {
+  0%, 100% { r: 15; opacity: 0.5; }
+  50% { r: 16.5; opacity: 0.85; }
+}
+@keyframes ava-breathe {
+  0%, 100% { r: 6; }
+  50% { r: 6.8; }
+}
+@keyframes ava-orbit-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@keyframes ava-typing {
+  0%, 60%, 100% { opacity: 0.25; transform: translateY(0); }
+  30% { opacity: 1; transform: translateY(-1.5px); }
+}
+
+.ava-ring-outer { animation: ava-pulse-outer 3.2s ease-in-out infinite; transform-origin: 24px 24px; }
+.ava-ring-inner { animation: ava-pulse-inner 3.2s ease-in-out infinite 0.2s; transform-origin: 24px 24px; }
+.ava-core { animation: ava-breathe 3.2s ease-in-out infinite; transform-origin: 24px 24px; }
+.ava-orbit { animation: ava-orbit-spin 6s linear infinite; transform-origin: 24px 24px; }
+.ava-typing-dot { animation: ava-typing 1.2s ease-in-out infinite; display: inline-block; }
